@@ -1,22 +1,13 @@
 include Facebook::Messenger
 
-GIF_REGEX = /(gif)\s(?<subject>.+)/
+Bot.on :message do |input|
+  input.typing_on
 
-Bot.on :message do |message|
-  message.mark_seen
-  message.typing_on
+  User.first_or_create(psid: input.sender['id'])
 
-  if matches = GIF_REGEX.match(message.text)
-    gif_url = RandomGifUrl.new(matches[:subject]).call
-    message.reply(
-      attachment: {
-        type: 'image',
-        payload: {
-          url: gif_url
-        }
-      }
-    )
-  else
-    message.reply(text: 'Ich nie understand :((')
-  end
+  api_ai_response = ApiAi::RequestSender.new(session_id: input.sender['id'], message: input.text).call
+  parsed_response = ApiAi::ResponseParser.new(api_ai_response).call
+  output = ApiAi::OutputGenerator.new(parsed_response).call
+
+  input.reply(output)
 end
