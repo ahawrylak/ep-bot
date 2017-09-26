@@ -1,22 +1,14 @@
 include Facebook::Messenger
 
-GIF_REGEX = /(gif)\s(?<subject>.+)/
-
 Bot.on :message do |message|
   message.mark_seen
   message.typing_on
 
-  if matches = GIF_REGEX.match(message.text)
-    gif_url = RandomGifUrl.new(matches[:subject]).call
-    message.reply(
-      attachment: {
-        type: 'image',
-        payload: {
-          url: gif_url
-        }
-      }
-    )
+  if message.text.include? 'weather'
+    location = message.text.gsub('weather', '').strip
+    weather_info = Weather.new(location).call
+    message.reply(text: weather_info)
   else
-    message.reply(text: 'Ich nie understand :((')
+    message.reply(text: 'Nye panimayu xD')
   end
 end
