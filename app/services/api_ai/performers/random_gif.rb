@@ -1,8 +1,9 @@
 module ApiAi
   module Performers
     class RandomGif
-      def initialize response
+      def initialize response, message = nil
         @response = response
+        @message = message
       end
 
       def call

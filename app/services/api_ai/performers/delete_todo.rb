@@ -1,10 +1,11 @@
 module ApiAi
   module Performers
     class DeleteTodo
-      attr_reader :response
+      attr_reader :response, :message
 
-      def initialize response
+      def initialize response, message = nil
         @response = response
+        @message = message
       end
 
       def call
