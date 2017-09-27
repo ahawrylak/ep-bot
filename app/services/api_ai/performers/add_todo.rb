@@ -11,8 +11,9 @@ module ApiAi
       def call
         unless response[:action_incomplete]
           user = User.find_by!(psid: response[:psid])
-          user.todos.create!(item: response[:parameters]['task'])
+          user.todos.create!(item: response[:parameters].fetch('task', ''))
         end
+        message.reply(ApiAi::Performers::ShowTodoList.new(response, message).call)
         { text: response[:output] }
       end
 
