@@ -5,7 +5,8 @@ module ApiAi
     ACTION_PERFORMERS = {
       gif: ApiAi::Performers::RandomGif,
       create_todo: ApiAi::Performers::AddTodo,
-      show_todo_list: ApiAi::Performers::ShowTodoList
+      show_todo_list: ApiAi::Performers::ShowTodoList,
+      delete_todo: ApiAi::Performers::DeleteTodo
     }.freeze
 
     def initialize response
