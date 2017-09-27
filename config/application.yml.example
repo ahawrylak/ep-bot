@@ -1,3 +1,6 @@
 ACCESS_TOKEN: access_token
 VERIFY_TOKEN: verify_token
 APP_SECRET: app_id 
+
+API_AI_BASE_URL: https://api.api.ai/v1/query
+API_AI_ACCESS_TOKEN: api_ai_access_token

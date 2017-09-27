@@ -30,6 +30,8 @@ module EpBot
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
     config.paths.add File.join('app', 'bot'), glob: File.join('**', '*.rb')
+    config.paths.add File.join('app', 'services'), glob: File.join('**', '*.rb')
     config.autoload_paths += Dir[Rails.root.join('app', 'bot', '*')]
+    config.autoload_paths += Dir[Rails.root.join('app', 'services', '*')]
   end
 end
