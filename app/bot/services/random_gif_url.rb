@@ -8,7 +8,7 @@ class RandomGifUrl
 
   GIPHY_API_BASE_URL = 'http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC'
 
-  def initialize subject = 'animals'
+  def initialize subject = 'random'
     @subject = subject
   end
 
