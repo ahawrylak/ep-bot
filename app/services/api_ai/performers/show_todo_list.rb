@@ -10,8 +10,9 @@ module ApiAi
 
       def call
         user = User.find_by!(psid: response[:psid])
+        list = user.todos.map{ |todo| "- #{todo.item}\n" }.join
         {
-          text: user.todos.map { |todo| "- #{todo.item}\n" }.join
+          text: list.blank? ? 'Your todo list is empty' : list
         }
       end
     end
