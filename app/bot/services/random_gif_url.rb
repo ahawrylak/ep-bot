@@ -13,6 +13,6 @@ class RandomGifUrl
   end
 
   def giphy_url
-    GIPHY_API_BASE_URL + "&tag=#{subject}"
+    GIPHY_API_BASE_URL + "&tag=#{URI.escape(subject)}"
   end
 end
