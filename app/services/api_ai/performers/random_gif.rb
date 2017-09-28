@@ -10,6 +10,8 @@ module ApiAi
 
       def call
         message.reply(text: 'Wait a second xD')
+        message.typing_on
+        
         subject = response[:parameters].fetch('subject', nil) || 'random'
         {
           attachment: {
