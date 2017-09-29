@@ -13,6 +13,7 @@ gem 'figaro'
 gem 'http'
 gem 'sidekiq'
 gem 'sinatra', github: 'sinatra/sinatra'
+gem 'sidekiq-scheduler'
 
 
 group :production do
