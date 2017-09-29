@@ -1,0 +1,4 @@
+:schedule:
+  outdated_todos:
+    every: '6h'
+    class: OutdatedTodosWorker
