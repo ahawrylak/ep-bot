@@ -11,6 +11,10 @@ gem 'puma', '~> 3.7'
 gem 'facebook-messenger'
 gem 'figaro'
 gem 'http'
+gem 'sidekiq'
+gem 'sinatra', github: 'sinatra/sinatra'
+gem 'sidekiq-scheduler'
+
 
 group :production do
   gem 'rails_12factor'

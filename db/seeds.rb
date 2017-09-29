@@ -1,7 +1,17 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+def random_time_between start_time, end_time
+  Time.at((end_time.to_f - start_time.to_f) * rand + start_time.to_f)
+end
+
+users = []
+10.times do |num|
+  users << User.create!(psid: num, name: "Sample User #{num}")
+end
+puts 'Users created...'
+
+100.times do |num|
+  users.sample.todos.create!(item: "todo #{num}", created_at: random_time_between(4.years.ago, Time.now) )
+end
+puts 'Todos created...'
+
+puts 'Seeds successful!'
+
